@@ -26,7 +26,6 @@ Ask coding questions, get concepts explained, or draft text — all through a si
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
 - [Notes](#-notes)
-- [License](#-license)
 
 ---
 
@@ -141,9 +140,3 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser 🚀
 
 - If Supabase isn't reachable, the app automatically falls back to local JSON storage for chat history and user data
 - Keep your `.env` file out of version control (already included in `.gitignore`)
-
----
-
-## 📄 License
-
-This project is open for personal and educational use.
