@@ -22,16 +22,16 @@ Ask coding questions, get concepts explained, or draft text — all through a si
 - [Overview](#-overview)
 - [Live Demo](#-live-demo)
 - [Features](#-features)
-- [Architecture](#️-architecture)
+- [Architecture](#-architecture)
 - [Chat Modules](#-chat-modules)
 - [Getting Started](#-getting-started)
 - [Usage](#-usage)
 - [System Configuration](#-system-configuration)
-- [Performance Metrics](#-performance-metrics)
+- [At a Glance](#-at-a-glance)
 - [Project Structure](#-project-structure)
-- [Technologies Used](#️-technologies-used)
+- [Technologies Used](#-technologies-used)
 - [Security & Privacy](#-security--privacy)
-- [Deployment](#️-deployment)
+- [Deployment](#-deployment)
 - [Best Use Cases](#-best-use-cases)
 - [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
@@ -54,7 +54,7 @@ The platform uses **Supabase for persistent storage**, with an automatic local f
 
 ### 👉 [**Launch AI Assistant**](https://ai-chatbot-llmbased.netlify.app)
 
-*Runs live in your browser — no installation required.*
+*Runs live in your browser — no installation required. Create an account, add your Groq API key in Settings, and start chatting.*
 
 </div>
 
@@ -69,17 +69,20 @@ The platform uses **Supabase for persistent storage**, with an automatic local f
 ### 💬 Chat System
 - **Simple, ChatGPT-style Interface** — clean, distraction-free chat UI
 - **Fast Inference** — powered by Groq (`openai/gpt-oss-20b`)
-- **Quick-Start Prompts** — for coding, explanations, and writing
-- **Per-User Chat History** — conversations persist across sessions
+- **Quick-Start Prompts** — for writing code, explaining concepts, and drafting text
+- **Live Character & Token Counter** — see the size of your message as you type
+- **Per-User Chat History** — conversations persist across sessions, with **New Chat** and **Recent Chats** in the sidebar
 
 </td>
 <td valign="top" width="50%">
 
 ### ⚙️ Reliability & Access
-- **User Authentication** — secure, per-user access
+- **User Accounts** — sign up and sign in with email and password
+- **Chat Export** — download your conversation as JSON or plain text
+- **History Control** — delete individual messages or clear all saved history
+- **Settings Panel** — add or update your Groq API key at any time
 - **Automatic Fallback Storage** — local JSON if Supabase is unreachable
 - **Supabase Integration** — managed persistence for chats and users
-- **Netlify Deployment** — fast, globally distributed hosting
 
 </td>
 </tr>
@@ -87,7 +90,7 @@ The platform uses **Supabase for persistent storage**, with an automatic local f
 
 ---
 
-## 🏗️ Architecture
+## 🧱 Architecture
 
 ### Core Components
 
@@ -149,7 +152,7 @@ The platform uses **Supabase for persistent storage**, with an automatic local f
 
 **1. Clone the repository**
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/kschouhanpali-coder/ai-assistant.git
 cd ai-assistant
 ```
 
@@ -181,20 +184,26 @@ Visit `http://localhost:3000` in your browser 🚀
 
 ## 📖 Usage
 
+### Account
+1. Choose **Sign Up** and create an account with your email and a password (minimum 6 characters)
+2. Next time, use **Sign In** to pick up where you left off
+
 ### Chat
 1. Type your message in the chat box and press send
 2. Use the quick-start prompts to try coding, explanations, or writing
 3. The assistant responds in real time using Groq inference
+4. Start a fresh conversation any time with **New Chat**
 
 ### System Configuration
 1. Open the **Settings** panel
-2. Add or update your Groq API key at any time
+2. Pick your model provider and save your Groq API key
 3. (Optional) Connect Supabase for persistent chat history
 
 ### Chat History
-- Conversations are saved per authenticated user
+- Conversations are saved per authenticated user and listed under **Recent Chats**
+- **Export** your history as JSON (raw messages with roles and timestamps) or TXT (readable text with timestamp headers)
+- **Delete** a single message, or **clear** all saved history
 - If Supabase isn't reachable, history falls back to local JSON automatically
-- No manual setup required for the fallback to kick in
 
 ---
 
@@ -215,13 +224,14 @@ Handles user authentication and persistent chat history.
 
 ---
 
-## 📊 Performance Metrics
+## 📊 At a Glance
 
-| Metric | Value |
+| Item | Value |
 |---|---|
 | **AI Provider** | Groq |
 | **Model** | `openai/gpt-oss-20b` |
 | **Storage Fallback** | Automatic (local JSON) |
+| **Export Formats** | JSON, TXT |
 | **Deployment** | Netlify |
 
 ---
@@ -232,23 +242,23 @@ Handles user authentication and persistent chat history.
 ai-assistant/
 ├── server.js                # Express app entry point
 ├── routes/
-│   ├── chat.js               # Chat message handling
-│   └── auth.js               # User authentication routes
+│   ├── chat.js              # Chat message handling
+│   └── auth.js              # User authentication routes
 ├── services/
-│   ├── groqClient.js         # Groq API integration
-│   └── storage.js            # Supabase + local JSON fallback logic
+│   ├── groqClient.js        # Groq API integration
+│   └── storage.js           # Supabase + local JSON fallback logic
 ├── public/
-│   ├── index.html            # Chat interface
-│   ├── styles.css            # Frontend styling
-│   └── app.js                # Frontend chat logic
-├── .env.example               # Environment variables template
-├── package.json               # Node dependencies
+│   ├── index.html           # Chat interface
+│   ├── styles.css           # Frontend styling
+│   └── app.js               # Frontend chat logic
+├── .env.example             # Environment variables template
+├── package.json             # Node dependencies
 └── README.md
 ```
 
 ---
 
-## 🛠️ Technologies Used
+## 🧰 Technologies Used
 
 | Category | Technology |
 |---|---|
@@ -282,7 +292,7 @@ npm install
 
 ---
 
-## ☁️ Deployment
+## 🌍 Deployment
 
 ### Netlify (Recommended)
 1. Push your code to GitHub
@@ -307,11 +317,12 @@ npm run dev
 
 ---
 
-## 🗺️ Roadmap
+## 🚧 Roadmap
 
+- [x] User accounts and per-user chat history
+- [x] Conversation export (JSON & TXT)
 - [ ] Streaming responses
 - [ ] Multi-model provider switching
-- [ ] Conversation export
 - [ ] Mobile-responsive UI improvements
 - [ ] File upload support in chat
 - [ ] Dark mode
@@ -341,6 +352,9 @@ Yes — update the `GROQ_MODEL` value in your `.env` file.
 **Do I need a Supabase account to run this?**
 No, it's optional. The app works out of the box with local storage.
 
+**Can I export my conversations?**
+Yes. Use the export option to download your history as JSON or plain text.
+
 **Can I run this locally?**
 Yes! Follow the installation steps above to run it on your own machine.
 
@@ -352,7 +366,7 @@ Yes! Follow the installation steps above to run it on your own machine.
 
 🤖
 
-### Built by [Your Name](https://github.com/your-username)
+### Built by [kschouhanpali-coder](https://github.com/kschouhanpali-coder)
 
 *"A clean, fast chat interface powered by open-source LLMs."*
 
@@ -360,11 +374,11 @@ Yes! Follow the installation steps above to run it on your own machine.
 
 <br/>
 
-> 📬 **Get in touch** — reach out on [GitHub](https://github.com/your-username), [X / Twitter](https://twitter.com/your-username), or via [email](mailto:support@ai-assistant.dev).
+> 📬 **Get in touch** — reach out on [GitHub](https://github.com/kschouhanpali-coder).
 >
-> 🐛 **Found a bug?** [Open an issue](https://github.com/your-username/ai-assistant/issues) with a detailed description and I'll take a look.
+> 🐛 **Found a bug?** [Open an issue](https://github.com/kschouhanpali-coder/ai-assistant/issues) with a detailed description and I'll take a look.
 >
-> 💡 **Have an idea for a feature?** [Start a discussion](https://github.com/your-username/ai-assistant/discussions) — I'd love to hear it.
+> 💡 **Have an idea for a feature?** [Start a discussion](https://github.com/kschouhanpali-coder/ai-assistant/discussions) — I'd love to hear it.
 >
 > ⭐ **Finding AI Assistant useful?** A star on the repo helps others discover it too.
 
